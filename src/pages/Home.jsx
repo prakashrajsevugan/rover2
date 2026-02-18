@@ -16,7 +16,7 @@ L.Icon.Default.mergeOptions({
 
 // Custom rover icon
 const roverIcon = new L.Icon({
-  iconUrl: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxOCIgZmlsbD0iIzEwYjk4MSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSIyMCIgeT0iMjYiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfpow8L3RleHQ+PC9zdmc+',
+  iconUrl: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxOCIgZmlsbD0iIzAwNzdCRSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSIyMCIgeT0iMjYiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfpow8L3RleHQ+PC9zdmc+',
   iconSize: [40, 40],
   iconAnchor: [20, 40],
   popupAnchor: [0, -40]
@@ -362,13 +362,13 @@ const Home = () => {
                 <div 
                   onClick={handleGetCurrentLocation}
                   style={{ 
-                    backgroundColor: '#10b981', 
+                    backgroundColor: '#0077BE', 
                     color: 'white', 
                     padding: '6px 16px', 
                     borderRadius: '20px',
                     fontWeight: 'bold',
                     fontSize: '13px',
-                    boxShadow: '0 2px 8px rgba(16, 185, 129, 0.4)',
+                    boxShadow: '0 2px 8px rgba(0, 119, 190, 0.4)',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '6px',
@@ -377,14 +377,14 @@ const Home = () => {
                     userSelect: 'none'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#059669';
+                    e.currentTarget.style.backgroundColor = '#0099E5';
                     e.currentTarget.style.transform = 'scale(1.05)';
-                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(16, 185, 129, 0.5)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 184, 212, 0.5)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '#10b981';
+                    e.currentTarget.style.backgroundColor = '#0077BE';
                     e.currentTarget.style.transform = 'scale(1)';
-                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(16, 185, 129, 0.4)';
+                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 119, 190, 0.4)';
                   }}
                   title="Click to use your device's current location"
                 >

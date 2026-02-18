@@ -75,8 +75,8 @@ const Navbar = ({ username: usernameProp }) => {
   return (
     <header className={`w-full shadow-lg sticky top-0 z-50 animate-[slideInDown_0.5s_ease-out] transition-all duration-300 ${
       isScrolled 
-        ? 'bg-slate-900/95 backdrop-blur-md border-b border-slate-700' 
-        : 'bg-slate-900 border-b border-slate-800'
+        ? 'bg-[#001529]/95 backdrop-blur-md border-b border-[#005a8c]' 
+        : 'bg-[#001529] border-b border-[#003d5c]'
     }`}>
       <nav className="mx-auto flex w-full items-center justify-between px-4 py-3 md:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2 text-white group">
@@ -113,7 +113,7 @@ const Navbar = ({ username: usernameProp }) => {
                 👤 {username}
               </button>
               {showLogoutMenu && (
-                <div className="absolute right-0 mt-2 w-48 bg-slate-800 border border-slate-700 rounded-lg shadow-xl py-2 z-50 animate-[scaleIn_0.2s_ease-out]">
+                <div className="absolute right-0 mt-2 w-48 bg-[#002140] border border-[#005a8c] rounded-lg shadow-xl py-2 z-50 animate-[scaleIn_0.2s_ease-out]">
                   <button
                     onClick={handleLogout}
                     className="w-full text-left px-4 py-2 text-sm text-slate-200 hover:bg-red-900/30 hover:text-red-400 transition-colors duration-200 flex items-center gap-2"
@@ -127,10 +127,10 @@ const Navbar = ({ username: usernameProp }) => {
           ) : (
             <Link
               to="/login"
-              className="relative rounded-lg bg-emerald-600 hover:bg-emerald-500 px-4 py-2 text-base font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/30 hover:scale-105 active:scale-95 overflow-hidden group"
+              className="relative rounded-lg bg-[#0077BE] hover:bg-[#0099E5] px-4 py-2 text-base font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#0077BE]/30 hover:scale-105 active:scale-95 overflow-hidden group"
             >
               <span className="relative z-10">Sign In / Sign Up</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+              <span className="absolute inset-0 bg-gradient-to-r from-[#00B8D4] to-[#00D4FF] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700"></span>
             </Link>
           )}
@@ -166,7 +166,7 @@ const Navbar = ({ username: usernameProp }) => {
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{
-          background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+          background: 'linear-gradient(180deg, #001529 0%, #003d5c 50%, #001529 100%)',
           backdropFilter: 'blur(10px)',
           WebkitBackdropFilter: 'blur(10px)'
         }}
@@ -197,11 +197,11 @@ const Navbar = ({ username: usernameProp }) => {
             <span>Contact</span>
           </Link>
           
-          <div className="mt-6 pt-6 border-t border-slate-700">
+          <div className="mt-6 pt-6 border-t border-[#005a8c]">
             {username ? (
               <div className="space-y-3">
                 <div className="text-white text-base font-medium py-3 px-4 rounded-lg bg-white/10 flex items-center gap-3">
-                  <span className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-sm font-semibold">
+                  <span className="w-8 h-8 bg-[#0077BE] rounded-full flex items-center justify-center text-sm font-semibold">
                     {username.charAt(0).toUpperCase()}
                   </span>
                   <span>{username}</span>
@@ -221,7 +221,7 @@ const Navbar = ({ username: usernameProp }) => {
               <Link
                 to="/login"
                 onClick={closeMenu}
-                className="block text-center bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white text-base font-semibold py-3.5 px-4 rounded-lg transition-colors duration-200"
+                className="block text-center bg-[#0077BE] hover:bg-[#0099E5] active:bg-[#0066A5] text-white text-base font-semibold py-3.5 px-4 rounded-lg transition-colors duration-200"
               >
                 Sign In / Sign Up
               </Link>

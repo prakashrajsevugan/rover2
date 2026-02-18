@@ -20,21 +20,21 @@ const Start = () => {
   ];
 
   return (
-    <div id="start" className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-12 sm:py-16 px-4 sm:px-6">
+    <div id="start" className="min-h-screen bg-gradient-to-br from-[#001529] via-[#003d5c] to-[#001529] py-12 sm:py-16 px-4 sm:px-6">
       <div className="w-full max-w-2xl mx-auto">
         {/* Hero Section */}
-        <div className="bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl shadow-xl p-8 sm:p-10 md:p-12 mb-8">
+        <div className="bg-[#002140]/60 backdrop-blur-sm border border-[#005a8c]/50 rounded-2xl shadow-xl p-8 sm:p-10 md:p-12 mb-8">
         {/* Header */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center justify-center mb-6">
-            <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/20">
+            <div className="w-20 h-20 bg-gradient-to-br from-[#0077BE] to-[#00B8D4] rounded-2xl flex items-center justify-center shadow-lg shadow-[#0077BE]/20">
               <span className="text-4xl">🌊</span>
             </div>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight leading-tight">
             Albedrozes Water Cleaning System
           </h1>
-          <p className="text-lg sm:text-xl text-emerald-400 font-medium mb-3">
+          <p className="text-lg sm:text-xl text-[#00D4FF] font-medium mb-3">
             Autonomous Rover Technology
           </p>
           <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
@@ -43,7 +43,7 @@ const Start = () => {
         </div>
 
         {/* Product Showcase */}
-        <div className="bg-slate-900/50 rounded-xl overflow-hidden mb-8 border border-slate-700/50">
+        <div className="bg-[#001529]/50 rounded-xl overflow-hidden mb-8 border border-[#005a8c]/50">
           <div className="relative aspect-video overflow-hidden">
             <img 
               src="/images/rover2.jpeg" 
@@ -59,13 +59,13 @@ const Start = () => {
               Our flagship autonomous water cleaning rover, equipped with intelligent debris collection, real-time GPS tracking, and advanced water purification technology.
             </p>
             <div className="flex flex-wrap gap-2">
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-[#0077BE]/20 text-[#00D4FF] border border-[#0077BE]/30">
                 🤖 Autonomous
               </span>
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-teal-500/10 text-teal-400 border border-teal-500/20">
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-[#00B8D4]/20 text-[#80deea] border border-[#00B8D4]/30">
                 🐢 Amphibious
               </span>
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-[#00D4FF]/20 text-[#b2ebf2] border border-[#00D4FF]/30">
                 📍 Live Tracking
               </span>
             </div>
@@ -76,7 +76,7 @@ const Start = () => {
         <div className="text-center">
           <button
             onClick={() => navigate("/login")}
-            className="px-8 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-lg rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-emerald-500/25 active:scale-[0.98]"
+            className="px-8 py-3 bg-gradient-to-r from-[#0077BE] to-[#00B8D4] hover:from-[#0099E5] hover:to-[#00D4FF] text-white font-semibold text-lg rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#0077BE]/30 active:scale-[0.98]"
           >
             Get Started
           </button>
