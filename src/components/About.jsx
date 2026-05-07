@@ -84,7 +84,7 @@ const About = () => {
             To revolutionize water cleaning through autonomous robotic technology, making our water bodies cleaner and healthier for future generations. We combine cutting-edge AI, advanced sensors, and sustainable engineering to combat water pollution at scale.
           </p>
           <p className="text-lg text-slate-300 leading-relaxed">
-            Our rovers operate autonomously 24/7, collecting debris, monitoring water quality, and providing real-time environmental data to help communities maintain clean, healthy aquatic ecosystems.
+            Our rovers operate autonomously 24/7, collecting debris, monitoring water quality, and providing real-time environmental data to help communities maintain clean, healthy aquatic ecosystems. Water quality monitoring is one of our key features, helping track pH, turbidity, TDS, dissolved oxygen, BOD, and COD.
           </p>
         </div>
 

@@ -273,6 +273,10 @@
   animation: bounce 2s ease-in-out infinite;
 }
 
+.metric-icon.no-animation {
+  animation: none;
+}
+
 .metric-label {
   font-size: 0.875rem;
   font-weight: 600;

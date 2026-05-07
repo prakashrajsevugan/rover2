@@ -48,6 +48,14 @@ const Home = () => {
   const [stream, setStream] = useState(null);
   const [capturedImage, setCapturedImage] = useState(null);
   
+  // Water Quality Metrics
+  const [pH, setPH] = useState(0);
+  const [turbidity, setTurbidity] = useState(0);
+  const [tds, setTDS] = useState(0);
+  const [dissolvedOxygen, setDissolvedOxygen] = useState(0);
+  const [bod, setBOD] = useState(0);
+  const [cod, setCOD] = useState(0);
+
   const runningTimerRef = useRef(null);
   const startTimeRef = useRef(null);
   const totalSecondsRef = useRef(0);
@@ -319,12 +327,19 @@ const Home = () => {
     setDebrisCollected(0);
     setBatteryLevel(85);
     setAreaCleaned(0);
+      setPH(0);
+      setTurbidity(0);
+      setTDS(0);
+      setDissolvedOxygen(0);
+      setBOD(0);
+      setCOD(0);
     totalSecondsRef.current = 0;
     
     alert("System reset successfully!");
   };
 
   const batteryBadge = getBatteryBadge();
+  const fixedBatteryLevel = 0;
 
   return (
     <>
@@ -529,6 +544,64 @@ const Home = () => {
             </div>
           </section>
 
+          {/* Water Quality Metrics Section */}
+          <section className="metrics-section">
+            <div className="metrics-header">
+              <span className="metrics-icon">💧</span>
+              <h2>Water Quality Metrics</h2>
+            </div>
+            <div className="metrics-cards">
+              <div className="metric-card debris-card">
+                <span className="metric-icon no-animation">🧪</span>
+                <p className="metric-label">pH Level</p>
+                <p className="metric-value">{pH.toFixed(2)}</p>
+                <span className={`metric-badge ${pH >= 6.5 && pH <= 8.5 ? 'good' : 'ready'}`}>
+                  {pH >= 6.5 && pH <= 8.5 ? 'Neutral' : 'Adjust'}
+                </span>
+              </div>
+              <div className="metric-card battery-card">
+                <span className="metric-icon no-animation">📊</span>
+                <p className="metric-label">Turbidity</p>
+                <p className="metric-value">{turbidity.toFixed(2)} NTU</p>
+                <span className={`metric-badge ${turbidity < 5 ? 'good' : 'ready'}`}>
+                  {turbidity < 5 ? 'Clear' : 'Improving'}
+                </span>
+              </div>
+              <div className="metric-card area-card">
+                <span className="metric-icon no-animation">💦</span>
+                <p className="metric-label">TDS</p>
+                <p className="metric-value">{tds.toFixed(0)} ppm</p>
+                <span className={`metric-badge ${tds < 500 ? 'good' : 'ready'}`}>
+                  {tds < 500 ? 'Good' : 'High'}
+                </span>
+              </div>
+              <div className="metric-card debris-card">
+                <span className="metric-icon no-animation">🌬️</span>
+                <p className="metric-label">Dissolved Oxygen</p>
+                <p className="metric-value">{dissolvedOxygen.toFixed(2)} mg/L</p>
+                <span className={`metric-badge ${dissolvedOxygen > 5 ? 'good' : 'ready'}`}>
+                  {dissolvedOxygen > 5 ? 'Healthy' : 'Low'}
+                </span>
+              </div>
+              <div className="metric-card battery-card">
+                <span className="metric-icon no-animation">🔬</span>
+                <p className="metric-label">BOD</p>
+                <p className="metric-value">{bod.toFixed(2)} mg/L</p>
+                <span className={`metric-badge ${bod < 5 ? 'good' : 'ready'}`}>
+                  {bod < 5 ? 'Good' : 'High'}
+                </span>
+              </div>
+              <div className="metric-card area-card">
+                <span className="metric-icon no-animation">🧬</span>
+                <p className="metric-label">COD</p>
+                <p className="metric-value">{cod.toFixed(2)} mg/L</p>
+                <span className={`metric-badge ${cod < 20 ? 'good' : 'ready'}`}>
+                  {cod < 20 ? 'Normal' : 'Elevated'}
+                </span>
+              </div>
+            </div>
+          </section>
+
           {/* Cleaning Metrics Section */}
           <section className="metrics-section">
             <div className="metrics-header">
@@ -547,7 +620,7 @@ const Home = () => {
               <div className="metric-card battery-card">
                 <span className="metric-icon">🔋</span>
                 <p className="metric-label">Battery Level</p>
-                <p className="metric-value">100%</p>
+                <p className="metric-value">{fixedBatteryLevel}%</p>
                 <span className={`metric-badge ${batteryBadge.class}`}>
                   {batteryBadge.text}
                 </span>
