@@ -66,7 +66,7 @@ const Start = () => {
                 🐢 Amphibious
               </span>
               <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-[#00D4FF]/20 text-[#b2ebf2] border border-[#00D4FF]/30">
-                📍 Live Tracking
+                📍 Quality checking
               </span>
             </div>
           </div>
