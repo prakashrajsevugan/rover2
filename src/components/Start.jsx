@@ -44,13 +44,13 @@ const Start = () => {
 
         {/* Product Showcase */}
         <div className="bg-[#001529]/50 rounded-xl overflow-hidden mb-8 border border-[#005a8c]/50">
-          <div className="relative aspect-video overflow-hidden">
+          {/* <div className="relative aspect-video overflow-hidden">
             <img 
               src="/images/rover2.jpeg" 
               alt="Albedrozes Surface Rover - Advanced Water Cleaning System" 
               className="w-full h-full object-cover"
             />
-          </div>
+          </div> */}
           <div className="p-6 sm:p-8">
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
               Surface Cleaning Rover

@@ -127,6 +127,10 @@ const Home = () => {
       alert("Please enter Rover ID first!");
       return;
     }
+    if (roverId !== "1853RV1") {
+      alert("Invalid ID");
+      return;
+    }
     setIsCleaning(true);
     const now = new Date();
     setActivatedTime(formatTime(now));
@@ -535,7 +539,7 @@ const Home = () => {
               <div className="metric-card debris-card">
                 <span className="metric-icon">🗑️</span>
                 <p className="metric-label">Debris Collected</p>
-                <p className="metric-value">{debrisCollected} kg</p>
+                <p className="metric-value">0 kg</p>
                 <span className={`metric-badge ${isCleaning ? 'good' : 'ready'}`}>
                   {isCleaning ? 'Collecting' : 'Ready'}
                 </span>
@@ -543,7 +547,7 @@ const Home = () => {
               <div className="metric-card battery-card">
                 <span className="metric-icon">🔋</span>
                 <p className="metric-label">Battery Level</p>
-                <p className="metric-value">{batteryLevel}%</p>
+                <p className="metric-value">100%</p>
                 <span className={`metric-badge ${batteryBadge.class}`}>
                   {batteryBadge.text}
                 </span>
@@ -551,7 +555,7 @@ const Home = () => {
               <div className="metric-card area-card">
                 <span className="metric-icon">🌊</span>
                 <p className="metric-label">Area Cleaned</p>
-                <p className="metric-value">{areaCleaned} m²</p>
+                <p className="metric-value">0 m²</p>
                 <span className={`metric-badge ${isCleaning ? 'good' : 'standby'}`}>
                   {isCleaning ? 'Active' : 'Standby'}
                 </span>
