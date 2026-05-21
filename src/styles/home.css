@@ -2,11 +2,11 @@
 .status-section {
   max-width: 1400px;
   margin: 2rem auto 0;
-  background: #002140;
+  background: #DFE6E9;
   border-radius: 0.75rem;
   padding: 1.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  border: 1px solid #005a8c;
+
 }
 
 @media (min-width: 768px) {
@@ -40,13 +40,13 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, #0077BE 0%, #00B8D4 100%);
+  background: linear-gradient(135deg, #D63031 0%, #E84C3D 100%);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0, 119, 190, 0.4);
+  box-shadow: 0 2px 8px rgba(251, 54, 64, 0.4);
   margin-top: 0.5rem;
 }
 
@@ -82,7 +82,7 @@
 .metrics-header h2 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #e5e5e5;
+  color: #1E1E1E; /* use premium dark for visibility */
   margin: 0;
 }
 
@@ -119,8 +119,8 @@
 }
 
 .status-card {
-  background: #001529;
-  border-left: 4px solid #00B8D4;
+  background: #DFE6E9;
+
   border-radius: 12px;
   padding: 1.25rem 1rem;
   text-align: center;
@@ -136,8 +136,8 @@
 
 .status-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 212, 255, 0.2);
-  border-left-color: #00D4FF;
+  box-shadow: 0 8px 16px rgba(251, 54, 64, 0.2);
+
 }
 
 .status-label {
@@ -151,7 +151,7 @@
 .status-time {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #00B8D4;
+  color: #D63031;
   margin: 0.5rem 0;
   letter-spacing: 1px;
 }
@@ -200,11 +200,11 @@
 .metrics-section {
   max-width: 1400px;
   margin: 1.5rem auto 2rem;
-  background: #002140;
+  background: #DFE6E9;
   border-radius: 0.75rem;
   padding: 1.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  border: 1px solid #005a8c;
+
 }
 
 @media (min-width: 768px) {
@@ -254,16 +254,16 @@
 }
 
 .debris-card {
-  background: linear-gradient(135deg, #003d5c 0%, #002140 100%);
+  background: linear-gradient(135deg, #DFE6E9 0%, #DFE6E9 100%);
 }
 
 .battery-card {
-  background: linear-gradient(135deg, #004080 0%, #002850 100%);
+  background: linear-gradient(135deg, #DFE6E9 0%, #DFE6E9 100%);
 }
 
 .area-card {
-  background: linear-gradient(135deg, #005a8c 0%, #003560 100%);
-  border: 1px solid #00D4FF;
+  background: linear-gradient(135deg, #DFE6E9 0%, #DFE6E9 100%);
+
 }
 
 .metric-icon {
@@ -287,7 +287,7 @@
 .metric-value {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #00D4FF;
+  color: #D63031;
   margin: 0.5rem 0 0.75rem 0;
   animation: pulse 3s ease-in-out infinite;
 }

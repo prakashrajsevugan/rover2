@@ -75,20 +75,20 @@ const Navbar = ({ username: usernameProp }) => {
   return (
     <header className={`w-full shadow-lg sticky top-0 z-50 animate-[slideInDown_0.5s_ease-out] transition-all duration-300 ${
       isScrolled 
-        ? 'bg-[#001529]/95 backdrop-blur-md border-b border-[#005a8c]' 
-        : 'bg-[#001529] border-b border-[#003d5c]'
+        ? 'bg-[#DFE6E9]/95 backdrop-blur-md border-b border-[#D63031]' 
+        : 'bg-[#DFE6E9] border-b border-[#DFE6E9]'
     }`}>
       <nav className="mx-auto flex w-full items-center justify-between px-4 py-3 md:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2 text-white group">
+        <Link to="/" className="flex items-center gap-2 text-[#1E1E1E] group">
           <img
-            className="h-15 w-15 rounded-xl shadow-md transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-white/30"
-            src="/images/logo.png"
-            alt="AST logo"
+            className="h-15 w-30 rounded-xl shadow-md transition-all duration-300 "
+            src="/images/Albedrozes.png"
+            alt="Albedrozes logo"
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6 text-white">
+        <div className="hidden md:flex items-center gap-6 text-[#1E1E1E]">
           <Link className="relative px-3 py-2 text-base font-semibold transition-all duration-300 hover:scale-110 group" to={username ? "/home" : "/start"}>
             <span className="relative z-10">Home</span>
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -108,15 +108,15 @@ const Navbar = ({ username: usernameProp }) => {
             <div className="relative" ref={logoutMenuRef}>
               <button
                 onClick={toggleLogoutMenu}
-                className="rounded-lg bg-white/20 px-4 py-2 text-base font-semibold backdrop-blur-sm transition-all duration-300 hover:bg-white/30 hover:scale-105 hover:shadow-lg hover:shadow-white/20 cursor-pointer"
+                className="rounded-lg bg-white/20 px-4 py-2 text-base font-semibold backdrop-blur-none transition-all duration-300 hover:bg-white/30 hover:scale-105 hover:shadow-lg hover:shadow-white/20 cursor-pointer"
               >
                 👤 {username}
               </button>
               {showLogoutMenu && (
-                <div className="absolute right-0 mt-2 w-48 bg-[#002140] border border-[#005a8c] rounded-lg shadow-xl py-2 z-50 animate-[scaleIn_0.2s_ease-out]">
+                <div className="absolute right-0 mt-2 w-48 bg-[#DFE6E9] border border-[#636E72] rounded-lg shadow-xl py-2 z-50 animate-[scaleIn_0.2s_ease-out]">
                   <button
                     onClick={handleLogout}
-                    className="w-full text-left px-4 py-2 text-sm text-slate-200 hover:bg-red-900/30 hover:text-red-400 transition-colors duration-200 flex items-center gap-2"
+                    className="w-full text-left px-4 py-2 text-sm text-[#1E1E1E] hover:bg-[#E8EBF0] hover:text-[#D63031] transition-colors duration-200 flex items-center gap-2"
                   >
                     <span>🚪</span>
                     <span className="font-semibold">Logout</span>
@@ -127,10 +127,10 @@ const Navbar = ({ username: usernameProp }) => {
           ) : (
             <Link
               to="/login"
-              className="relative rounded-lg bg-[#0077BE] hover:bg-[#0099E5] px-4 py-2 text-base font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#0077BE]/30 hover:scale-105 active:scale-95 overflow-hidden group"
+              className="relative rounded-lg bg-[#D63031] hover:bg-[#E84C3D] px-4 py-2 text-base font-semibold text-[#1E1E1E] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#D63031]/30 hover:scale-105 active:scale-95 overflow-hidden group"
             >
               <span className="relative z-10">Sign In / Sign Up</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-[#00B8D4] to-[#00D4FF] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+              <span className="absolute inset-0 bg-gradient-to-r from-[#E84C3D] to-[#D63031] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700"></span>
             </Link>
           )}
@@ -139,7 +139,7 @@ const Navbar = ({ username: usernameProp }) => {
         {/* Mobile Hamburger Button */}
         <button
           onClick={toggleMenu}
-          className="md:hidden flex flex-col items-center justify-center w-11 h-11 text-white focus:outline-none z-[60] relative"
+          className="md:hidden flex flex-col items-center justify-center w-11 h-11 text-[#1E1E1E] focus:outline-none z-[60] relative"
           aria-label="Toggle menu"
         >
           <span
@@ -166,7 +166,7 @@ const Navbar = ({ username: usernameProp }) => {
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{
-          background: 'linear-gradient(180deg, #001529 0%, #003d5c 50%, #001529 100%)',
+          background: 'linear-gradient(180deg, #DFE6E9 0%, #DFE6E9 50%, #DFE6E9 100%)',
           backdropFilter: 'blur(10px)',
           WebkitBackdropFilter: 'blur(10px)'
         }}
@@ -175,7 +175,7 @@ const Navbar = ({ username: usernameProp }) => {
           <Link
             to={username ? "/home" : "/start"}
             onClick={closeMenu}
-            className="text-white text-base font-medium py-3.5 px-4 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors duration-200 mb-1 flex items-center gap-3"
+            className="text-[#1E1E1E] text-base font-medium py-3.5 px-4 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors duration-200 mb-1 flex items-center gap-3"
           >
             <span className="text-xl">🏠</span>
             <span>Home</span>
@@ -183,7 +183,7 @@ const Navbar = ({ username: usernameProp }) => {
           <Link
             to="/about"
             onClick={closeMenu}
-            className="text-white text-base font-medium py-3.5 px-4 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors duration-200 mb-1 flex items-center gap-3"
+            className="text-[#1E1E1E] text-base font-medium py-3.5 px-4 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors duration-200 mb-1 flex items-center gap-3"
           >
             <span className="text-xl">ℹ️</span>
             <span>About</span>
@@ -191,7 +191,7 @@ const Navbar = ({ username: usernameProp }) => {
           <Link
             to="/contact"
             onClick={closeMenu}
-            className="text-white text-base font-medium py-3.5 px-4 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors duration-200 mb-1 flex items-center gap-3"
+            className="text-[#1E1E1E] text-base font-medium py-3.5 px-4 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors duration-200 mb-1 flex items-center gap-3"
           >
             <span className="text-xl">📞</span>
             <span>Contact</span>
@@ -200,7 +200,7 @@ const Navbar = ({ username: usernameProp }) => {
           <div className="mt-6 pt-6 border-t border-[#005a8c]">
             {username ? (
               <div className="space-y-3">
-                <div className="text-white text-base font-medium py-3 px-4 rounded-lg bg-white/10 flex items-center gap-3">
+                <div className="text-[#1E1E1E] text-base font-medium py-3 px-4 rounded-lg bg-white/10 flex items-center gap-3">
                   <span className="w-8 h-8 bg-[#0077BE] rounded-full flex items-center justify-center text-sm font-semibold">
                     {username.charAt(0).toUpperCase()}
                   </span>
@@ -211,7 +211,7 @@ const Navbar = ({ username: usernameProp }) => {
                     handleLogout();
                     closeMenu();
                   }}
-                  className="w-full text-white text-base font-medium py-3.5 px-4 rounded-lg bg-red-600/90 hover:bg-red-600 active:bg-red-700 transition-colors duration-200 flex items-center justify-center gap-2"
+                  className="w-full text-[#1E1E1E] text-base font-medium py-3.5 px-4 rounded-lg bg-red-600/90 hover:bg-red-600 active:bg-red-700 transition-colors duration-200 flex items-center justify-center gap-2"
                 >
                   <span>🚪</span>
                   <span>Logout</span>
@@ -221,7 +221,7 @@ const Navbar = ({ username: usernameProp }) => {
               <Link
                 to="/login"
                 onClick={closeMenu}
-                className="block text-center bg-[#0077BE] hover:bg-[#0099E5] active:bg-[#0066A5] text-white text-base font-semibold py-3.5 px-4 rounded-lg transition-colors duration-200"
+                className="block text-center bg-[#0077BE] hover:bg-[#0099E5] active:bg-[#0066A5] text-[#1E1E1E] text-base font-semibold py-3.5 px-4 rounded-lg transition-colors duration-200"
               >
                 Sign In / Sign Up
               </Link>

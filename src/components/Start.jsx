@@ -20,30 +20,33 @@ const Start = () => {
   ];
 
   return (
-    <div id="start" className="min-h-screen bg-gradient-to-br from-[#001529] via-[#003d5c] to-[#001529] py-12 sm:py-16 px-4 sm:px-6">
+    <div id="start" className="min-h-screen bg-gradient-to-br from-[#DFE6E9] via-[#E8EBF0] to-[#DFE6E9] py-12 sm:py-16 px-4 sm:px-6">
       <div className="w-full max-w-2xl mx-auto">
         {/* Hero Section */}
-        <div className="bg-[#002140]/60 backdrop-blur-sm border border-[#005a8c]/50 rounded-2xl shadow-xl p-8 sm:p-10 md:p-12 mb-8">
+        <div className="bg-[#DFE6E9]/60 backdrop-blur-none border border-[#636E72]/40 rounded-2xl shadow-xl p-8 sm:p-10 md:p-12 mb-8">
         {/* Header */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center justify-center mb-6">
-            <div className="w-20 h-20 bg-gradient-to-br from-[#0077BE] to-[#00B8D4] rounded-2xl flex items-center justify-center shadow-lg shadow-[#0077BE]/20">
-              <span className="text-4xl">🌊</span>
-            </div>
+            <img 
+              src="/images/header.png" 
+              alt="Albedrozes Logo"
+              className="w-20 h-19 object-contain shadow-lg shadow-[#D63031]/15"
+              style={{ borderRadius: '10px' }}
+            />
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1E1E1E] mb-3 tracking-tight leading-tight">
             Albedrozes Water Cleaning System
           </h1>
-          <p className="text-lg sm:text-xl text-[#00D4FF] font-medium mb-3">
+          <p className="text-lg sm:text-xl text-[#D63031] font-medium mb-3">
             Autonomous Rover Technology
           </p>
-          <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[#636E72] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Advanced Autonomous Water Purification & Debris Collection Platform
           </p>
         </div>
 
         {/* Product Showcase */}
-        <div className="bg-[#001529]/50 rounded-xl overflow-hidden mb-8 border border-[#005a8c]/50">
+        <div className="bg-gray-100 rounded-xl overflow-hidden mb-8 border border-[#636E72]/40">
           {/* <div className="relative aspect-video overflow-hidden">
             <img 
               src="/images/rover2.jpeg" 
@@ -52,21 +55,21 @@ const Start = () => {
             />
           </div> */}
           <div className="p-6 sm:p-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#1E1E1E] mb-3">
               Surface Cleaning Rover
             </h2>
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">
+            <p className="text-[#636E72] text-base sm:text-lg leading-relaxed mb-6">
               Our flagship autonomous water cleaning rover, equipped with intelligent debris collection, real-time GPS tracking, and advanced water purification technology.
             </p>
             <div className="flex flex-wrap gap-2">
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-[#0077BE]/20 text-[#00D4FF] border border-[#0077BE]/30">
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-[#D63031]/20 text-[#D63031] border border-[#636E72]/40">
                 🤖 Autonomous
               </span>
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-[#00B8D4]/20 text-[#80deea] border border-[#00B8D4]/30">
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-[#D63031]/20 text-[#E84C3D] border border-[#636E72]/40">
                 🐢 Amphibious
               </span>
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-[#00D4FF]/20 text-[#b2ebf2] border border-[#00D4FF]/30">
-                📍 Quality checking
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-[#D63031]/20 text-[#FF5757] border border-[#636E72]/40">
+                📍 Live Tracking
               </span>
             </div>
           </div>
@@ -76,7 +79,7 @@ const Start = () => {
         <div className="text-center">
           <button
             onClick={() => navigate("/login")}
-            className="px-8 py-3 bg-gradient-to-r from-[#0077BE] to-[#00B8D4] hover:from-[#0099E5] hover:to-[#00D4FF] text-white font-semibold text-lg rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#0077BE]/30 active:scale-[0.98]"
+            className="px-8 py-3 bg-gradient-to-r from-[#D63031] to-[#E84C3D] hover:from-[#E84C3D] hover:to-[#D63031] text-[#1E1E1E] font-semibold text-lg rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#D63031]/30 active:scale-[0.98]"
           >
             Get Started
           </button>
@@ -96,7 +99,7 @@ const Start = () => {
           <h2 className="text-center text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-rose-600 to-orange-600 bg-clip-text text-transparent mb-3">
             Dual Collection System
           </h2>
-          <p className="text-center text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed px-2 mb-3">
+          <p className="text-center text-[#636E72] text-sm sm:text-base md:text-lg leading-relaxed px-2 mb-3">
             Features dual floating tanks for enhanced stability and increased debris storage capacity. Perfect for large-scale water body cleaning operations with extended deployment times.
           </p>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
