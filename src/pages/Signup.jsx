@@ -1,155 +1,125 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { ArrowLeft, Lock, Mail, User, UserPlus } from "lucide-react";
 
 const Signup = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    if (email) {
+      const username = name || email.split('@')[0];
+      localStorage.setItem('username', username);
+      navigate("/home");
+    }
+  };
+
   return (
-    <section className="relative w-full min-h-screen bg-gradient-to-br from-[#DFE6E9] via-[#E8EBF0] to-[#DFE6E9] flex items-center justify-center p-4 sm:p-6">
-      <div className="w-full max-w-lg">
-        {/* Signup Card */}
-        <div className="bg-[#DFE6E9]/95 backdrop-blur-none border border-[#636E72]/40 rounded-2xl shadow-xl p-6 sm:p-8 md:p-10">
-          {/* Home Button */}
+    <section className="relative w-full min-h-screen bg-slate-100/90 flex items-center justify-center p-4 sm:p-6">
+      <div className="w-full max-w-md">
+        
+        {/* Floating Card */}
+        <div className="glass-card rounded-3xl p-6 sm:p-10 shadow-[0_25px_50px_rgba(0,0,0,0.04)] border border-white/60 space-y-6">
+          
           <Link
             to="/start"
-            className="inline-flex items-center gap-2 text-[#636E72] hover:text-[#D63031] font-semibold transition-all duration-300 hover:scale-105 mb-6"
+            className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-[#f01a30] transition-colors"
           >
-            <span className="text-xl">🏠</span>
+            <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
           </Link>
 
-          {/* Logo/Header */}
-          <div className="text-center mb-8">
-            <div className="flex justify-center mb-5">
+          <div className="text-center space-y-2">
+            <div className="flex justify-center mb-3 bg-transparent">
               <img
                 src="/images/header.png"
                 alt="Albedrozes Logo"
-                className="w-16 h-16 object-contain shadow-lg"
-                style={{ borderRadius: '10px' }}
+                className="h-16 w-auto object-contain mix-blend-multiply bg-transparent"
               />
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#1E1E1E] mb-2 tracking-tight">Create Account</h1>
-            <p className="text-[#636E72] text-sm">Join Albedrozes to get started</p>
+            <h1 className="text-2xl font-black text-slate-800 tracking-tight">Create Account</h1>
+            <p className="text-xs text-slate-500 font-medium">Join Albedrozes Private Limited</p>
           </div>
 
-          {/* Signup Form */}
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSignup}>
             <div>
-              <label className="block text-sm font-medium text-[#636E72] mb-2">
+              <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1.5">
                 Full Name
               </label>
-              <input
-                type="text"
-                className="w-full px-3.5 py-2.5 border border-[#636E72]/40 bg-white text-[#1E1E1E] rounded-lg focus:ring-2 focus:ring-[#D63031]/50 focus:border-[#D63031] outline-none transition-all placeholder:text-[#636E72]"
-                placeholder="John Doe"
-                required
-              />
+              <div className="relative">
+                <input
+                  type="text"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/40 backdrop-blur-md border border-white/60 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-[#f01a30]/30"
+                  placeholder="John Doe"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+                <User className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
+              </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#636E72] mb-2">
+              <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1.5">
                 Email Address
               </label>
-              <input
-                type="email"
-                className="w-full px-3.5 py-2.5 border border-[#636E72]/40 bg-white text-[#1E1E1E] rounded-lg focus:ring-2 focus:ring-[#D63031]/50 focus:border-[#D63031] outline-none transition-all placeholder:text-[#636E72]"
-                placeholder="name@company.com"
-                required
-              />
+              <div className="relative">
+                <input
+                  type="email"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/40 backdrop-blur-md border border-white/60 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-[#f01a30]/30"
+                  placeholder="name@company.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
+              </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#636E72] mb-2">
+              <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1.5">
                 Password
               </label>
-              <input
-                type="password"
-                className="w-full px-3.5 py-2.5 border border-[#636E72]/40 bg-white text-[#1E1E1E] rounded-lg focus:ring-2 focus:ring-[#D63031]/50 focus:border-[#D63031] outline-none transition-all placeholder:text-[#636E72]"
-                placeholder="••••••••"
-                required
-              />
+              <div className="relative">
+                <input
+                  type="password"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/40 backdrop-blur-md border border-white/60 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-[#f01a30]/30"
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <Lock className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
+              </div>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-[#636E72] mb-2">
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                className="w-full px-3.5 py-2.5 border border-[#636E72]/40 bg-white text-[#1E1E1E] rounded-lg focus:ring-2 focus:ring-[#D63031]/50 focus:border-[#D63031] outline-none transition-all placeholder:text-[#636E72]"
-                placeholder="••••••••"
-                required
-              />
+            <div className="flex items-start gap-2 text-xs text-slate-500 pt-1">
+              <input type="checkbox" required className="mt-0.5 rounded border-slate-300 text-[#f01a30] focus:ring-[#f01a30]" />
+              <span>I agree to the <a href="#" className="text-[#f01a30] font-bold">Terms of Service</a> and <a href="#" className="text-[#f01a30] font-bold">Privacy Policy</a></span>
             </div>
 
-            {/* Terms & Conditions */}
-            <div className="flex items-start text-sm">
-              <input
-                type="checkbox"
-                className="w-4 h-4 mt-0.5 text-[#D63031] border-[#D63031] rounded focus:ring-[#D63031]"
-                required
-              />
-              <span className="ml-2 text-[#636E72]">
-                I agree to the{" "}
-                <a href="#" className="text-[#D63031] hover:text-[#E84C3D] font-semibold">
-                  Terms of Service
-                </a>{" "}
-                and{" "}
-                <a href="#" className="text-[#D63031] hover:text-[#E84C3D] font-semibold">
-                  Privacy Policy
-                </a>
-              </span>
-            </div>
-
-            {/* Signup Button */}
             <button
               type="submit"
-              className="w-full mt-6 bg-gradient-to-r from-[#D63031] to-[#E84C3D] hover:from-[#E84C3D] hover:to-[#D63031] text-[#1E1E1E] font-semibold py-2.5 px-6 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#D63031]/30 active:scale-[0.98]"
+              className="w-full py-3.5 bg-[#f01a30] hover:bg-[#d61327] text-white font-bold rounded-xl shadow-lg shadow-[#f01a30]/25 hover:shadow-xl hover:shadow-[#f01a30]/35 transition-all flex items-center justify-center gap-2"
             >
-              Create Account
+              <UserPlus className="w-4 h-4" />
+              <span>Create Account</span>
             </button>
           </form>
 
-          {/* Divider */}
-          <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-[#D63031]"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-[#DFE6E9] text-slate-500">Or sign up with</span>
-            </div>
-          </div>
-
-          {/* Social Signup Buttons */}
-          <div className="grid grid-cols-2 gap-3">
-            <button
-              type="button"
-              className="flex items-center justify-center gap-2 px-4 py-3 border border-[#D63031] bg-[#DFE6E9] text-[#636E72] rounded-lg hover:bg-[#DFE6E9] transition"
-            >
-              <span className="text-xl">G</span>
-              <span className="text-sm font-semibold">Google</span>
-            </button>
-            <button
-              type="button"
-              className="flex items-center justify-center gap-2 px-4 py-3 border border-[#D63031] bg-[#DFE6E9] text-[#636E72] rounded-lg hover:bg-[#DFE6E9] transition"
-            >
-              <span className="text-xl">f</span>
-              <span className="text-sm font-semibold">Facebook</span>
-            </button>
-          </div>
-
-          {/* Login Link */}
-          <div className="text-center mt-6">
-            <p className="text-[#636E72]">
+          <div className="text-center pt-2">
+            <p className="text-xs text-slate-500">
               Already have an account?{" "}
-              <Link to="/login" className="text-[#D63031] hover:text-[#E84C3D] font-semibold">
+              <Link to="/signup" className="text-[#f01a30] font-bold hover:underline">
                 Sign in
               </Link>
             </p>
           </div>
-        </div>
 
-        {/* Additional Info */}
-        <p className="text-center text-[#636E72] text-sm mt-6">
-          By signing up, you agree to receive updates and marketing communications from AquaClean
-        </p>
+        </div>
       </div>
     </section>
   );

@@ -1,17 +1,17 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
+import { Home, Info, PhoneCall, User, LogOut, Menu, X, ChevronDown } from "lucide-react";
 
 const Navbar = ({ username: usernameProp }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [username, setUsername] = useState("");
   const [showLogoutMenu, setShowLogoutMenu] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const logoutMenuRef = useRef(null);
 
   useEffect(() => {
-    // Get username from prop or localStorage
-    const storedUsername = localStorage.getItem('username');
+    const storedUsername = localStorage.getItem("username");
     if (usernameProp) {
       setUsername(usernameProp);
     } else if (storedUsername) {
@@ -20,106 +20,112 @@ const Navbar = ({ username: usernameProp }) => {
   }, [usernameProp]);
 
   useEffect(() => {
-    // Handle scroll event
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    // Close logout menu when clicking outside
     const handleClickOutside = (event) => {
       if (logoutMenuRef.current && !logoutMenuRef.current.contains(event.target)) {
         setShowLogoutMenu(false);
       }
     };
-
     if (showLogoutMenu) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showLogoutMenu]);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
   const handleLogout = () => {
-    localStorage.removeItem('username');
+    localStorage.removeItem("username");
     setUsername("");
     setShowLogoutMenu(false);
-    navigate('/login');
+    navigate("/login");
   };
 
-  const toggleLogoutMenu = () => {
-    setShowLogoutMenu(!showLogoutMenu);
-  };
+  const isActive = (path) => location.pathname === path;
 
   return (
-    <header className={`w-full shadow-lg sticky top-0 z-50 animate-[slideInDown_0.5s_ease-out] transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-[#DFE6E9]/95 backdrop-blur-md border-b border-[#D63031]' 
-        : 'bg-[#DFE6E9] border-b border-[#DFE6E9]'
-    }`}>
-      <nav className="mx-auto flex w-full items-center justify-between px-4 py-3 md:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2 text-[#1E1E1E] group">
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200/90 shadow-sm transition-all duration-300">
+      <nav className="w-full md:w-[80%] mx-auto flex items-center justify-between py-4 sm:py-5 px-4 sm:px-6">
+        
+        {/* Brand Logo Section */}
+        <Link to="/" className="flex items-center gap-3.5 group">
           <img
-            className="h-15 w-30 rounded-xl shadow-md transition-all duration-300 "
-            src="/images/Albedrozes.png"
-            alt="Albedrozes logo"
+            src="/images/header.png"
+            alt="Albedrozes Logo"
+            className="h-12 sm:h-14 w-auto object-contain mix-blend-multiply bg-transparent group-hover:opacity-90 transition-opacity"
           />
+          <div className="flex flex-col">
+            <span className="text-2xl font-black tracking-tight text-slate-900 leading-none mb-1">
+              Albedrozes
+            </span>
+            <span className="text-[11px] font-extrabold text-[#f01a30] tracking-widest uppercase">
+              PRIVATE LIMITED
+            </span>
+          </div>
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6 text-[#1E1E1E]">
-          <Link className="relative px-3 py-2 text-base font-semibold transition-all duration-300 hover:scale-110 group" to={username ? "/home" : "/start"}>
-            <span className="relative z-10">Home</span>
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            <span className="absolute inset-0 rounded-lg bg-white/0 transition-all duration-300 group-hover:bg-white/20 group-hover:shadow-lg"></span>
-          </Link>
-          <Link className="relative px-3 py-2 text-base font-semibold transition-all duration-300 hover:scale-110 group" to="/about">
-            <span className="relative z-10">About</span>
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            <span className="absolute inset-0 rounded-lg bg-white/0 transition-all duration-300 group-hover:bg-white/20 group-hover:shadow-lg"></span>
-          </Link>
-          <Link className="relative px-3 py-2 text-base font-semibold transition-all duration-300 hover:scale-110 group" to="/contact">
-            <span className="relative z-10">Contact</span>
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            <span className="absolute inset-0 rounded-lg bg-white/0 transition-all duration-300 group-hover:bg-white/20 group-hover:shadow-lg"></span>
-          </Link>
+        {/* Desktop Enterprise Navigation Links */}
+        <div className="hidden md:flex items-center gap-8">
+          <div className="flex items-center gap-1.5 bg-slate-100/90 p-1.5 rounded-full border border-slate-200">
+            <Link
+              to={username ? "/home" : "/start"}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-extrabold transition-all duration-200 ${
+                isActive("/home") || isActive("/start") || isActive("/")
+                  ? "bg-white text-[#f01a30] shadow-sm"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+              }`}
+            >
+              <Home className="w-4 h-4" />
+              <span>Home</span>
+            </Link>
+
+            <Link
+              to="/about"
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-extrabold transition-all duration-200 ${
+                isActive("/about")
+                  ? "bg-white text-[#f01a30] shadow-sm"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+              }`}
+            >
+              <Info className="w-4 h-4" />
+              <span>About</span>
+            </Link>
+
+            <Link
+              to="/contact"
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-extrabold transition-all duration-200 ${
+                isActive("/contact")
+                  ? "bg-white text-[#f01a30] shadow-sm"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+              }`}
+            >
+              <PhoneCall className="w-4 h-4" />
+              <span>Contact</span>
+            </Link>
+          </div>
+
+          {/* User Account / Profile */}
           {username ? (
             <div className="relative" ref={logoutMenuRef}>
               <button
-                onClick={toggleLogoutMenu}
-                className="rounded-lg bg-white/20 px-4 py-2 text-base font-semibold backdrop-blur-none transition-all duration-300 hover:bg-white/30 hover:scale-105 hover:shadow-lg hover:shadow-white/20 cursor-pointer"
+                onClick={() => setShowLogoutMenu(!showLogoutMenu)}
+                className="flex items-center gap-3 bg-white border border-slate-200 px-4 py-2 rounded-full text-sm font-extrabold text-slate-800 shadow-sm hover:border-slate-300 transition-all cursor-pointer"
               >
-                👤 {username}
+                <div className="w-7 h-7 rounded-full bg-[#f01a30] text-white flex items-center justify-center font-bold text-xs shadow-xs">
+                  {username.charAt(0).toUpperCase()}
+                </div>
+                <span className="max-w-[130px] truncate">{username}</span>
+                <ChevronDown className="w-4 h-4 text-slate-400" />
               </button>
+
               {showLogoutMenu && (
-                <div className="absolute right-0 mt-2 w-48 bg-[#DFE6E9] border border-[#636E72] rounded-lg shadow-xl py-2 z-50 animate-[scaleIn_0.2s_ease-out]">
+                <div className="absolute right-0 mt-2 w-48 bg-white border border-slate-200 rounded-2xl shadow-xl py-2 z-50">
                   <button
                     onClick={handleLogout}
-                    className="w-full text-left px-4 py-2 text-sm text-[#1E1E1E] hover:bg-[#E8EBF0] hover:text-[#D63031] transition-colors duration-200 flex items-center gap-2"
+                    className="w-full text-left px-4 py-2.5 text-xs font-extrabold text-rose-600 hover:bg-rose-50 transition-colors flex items-center gap-2 cursor-pointer"
                   >
-                    <span>🚪</span>
-                    <span className="font-semibold">Logout</span>
+                    <LogOut className="w-4 h-4" />
+                    <span>Sign Out</span>
                   </button>
                 </div>
               )}
@@ -127,115 +133,75 @@ const Navbar = ({ username: usernameProp }) => {
           ) : (
             <Link
               to="/login"
-              className="relative rounded-lg bg-[#D63031] hover:bg-[#E84C3D] px-4 py-2 text-base font-semibold text-[#1E1E1E] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#D63031]/30 hover:scale-105 active:scale-95 overflow-hidden group"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#f01a30] hover:bg-[#d61327] text-white text-sm font-extrabold shadow-md shadow-[#f01a30]/25 hover:shadow-lg transition-all duration-200"
             >
-              <span className="relative z-10">Sign In / Sign Up</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-[#E84C3D] to-[#D63031] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
-              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700"></span>
+              <User className="w-4 h-4" />
+              <span>Sign In</span>
             </Link>
           )}
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Hamburger Menu */}
         <button
           onClick={toggleMenu}
-          className="md:hidden flex flex-col items-center justify-center w-11 h-11 text-[#1E1E1E] focus:outline-none z-[60] relative"
+          className="md:hidden p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none"
           aria-label="Toggle menu"
         >
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
-              isOpen ? "rotate-45 translate-y-1.5" : ""
-            }`}
-          ></span>
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-300 mt-1.5 ${
-              isOpen ? "opacity-0" : ""
-            }`}
-          ></span>
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-300 mt-1.5 ${
-              isOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
-          ></span>
+          {isOpen ? <X className="w-7 h-7 text-[#f01a30]" /> : <Menu className="w-7 h-7 text-slate-700" />}
         </button>
       </nav>
 
-      {/* Mobile Side Menu */}
-      <div
-        className={`md:hidden fixed top-0 right-0 h-full w-72 shadow-2xl transform transition-transform duration-300 ease-in-out z-50 overflow-y-auto ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-        style={{
-          background: 'linear-gradient(180deg, #DFE6E9 0%, #DFE6E9 50%, #DFE6E9 100%)',
-          backdropFilter: 'blur(10px)',
-          WebkitBackdropFilter: 'blur(10px)'
-        }}
-      >
-        <div className="flex flex-col h-full pt-20 px-6 pb-6">
+      {/* Mobile Drawer */}
+      {isOpen && (
+        <div className="md:hidden border-t border-slate-200 bg-white/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2 shadow-xl">
           <Link
             to={username ? "/home" : "/start"}
             onClick={closeMenu}
-            className="text-[#1E1E1E] text-base font-medium py-3.5 px-4 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors duration-200 mb-1 flex items-center gap-3"
+            className="flex items-center gap-3 px-4 py-3 rounded-xl font-extrabold text-slate-800 hover:bg-slate-50 transition-colors text-base"
           >
-            <span className="text-xl">🏠</span>
+            <Home className="w-5 h-5 text-[#f01a30]" />
             <span>Home</span>
           </Link>
           <Link
             to="/about"
             onClick={closeMenu}
-            className="text-[#1E1E1E] text-base font-medium py-3.5 px-4 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors duration-200 mb-1 flex items-center gap-3"
+            className="flex items-center gap-3 px-4 py-3 rounded-xl font-extrabold text-slate-800 hover:bg-slate-50 transition-colors text-base"
           >
-            <span className="text-xl">ℹ️</span>
+            <Info className="w-5 h-5 text-[#f01a30]" />
             <span>About</span>
           </Link>
           <Link
             to="/contact"
             onClick={closeMenu}
-            className="text-[#1E1E1E] text-base font-medium py-3.5 px-4 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors duration-200 mb-1 flex items-center gap-3"
+            className="flex items-center gap-3 px-4 py-3 rounded-xl font-extrabold text-slate-800 hover:bg-slate-50 transition-colors text-base"
           >
-            <span className="text-xl">📞</span>
+            <PhoneCall className="w-5 h-5 text-[#f01a30]" />
             <span>Contact</span>
           </Link>
-          
-          <div className="mt-6 pt-6 border-t border-[#005a8c]">
+          <div className="pt-3 border-t border-slate-200">
             {username ? (
-              <div className="space-y-3">
-                <div className="text-[#1E1E1E] text-base font-medium py-3 px-4 rounded-lg bg-white/10 flex items-center gap-3">
-                  <span className="w-8 h-8 bg-[#0077BE] rounded-full flex items-center justify-center text-sm font-semibold">
-                    {username.charAt(0).toUpperCase()}
-                  </span>
-                  <span>{username}</span>
-                </div>
-                <button
-                  onClick={() => {
-                    handleLogout();
-                    closeMenu();
-                  }}
-                  className="w-full text-[#1E1E1E] text-base font-medium py-3.5 px-4 rounded-lg bg-red-600/90 hover:bg-red-600 active:bg-red-700 transition-colors duration-200 flex items-center justify-center gap-2"
-                >
-                  <span>🚪</span>
-                  <span>Logout</span>
-                </button>
-              </div>
+              <button
+                onClick={() => {
+                  handleLogout();
+                  closeMenu();
+                }}
+                className="w-full flex items-center justify-center gap-2 py-3 bg-rose-50 text-rose-600 font-extrabold rounded-xl text-base"
+              >
+                <LogOut className="w-5 h-5" />
+                <span>Sign Out ({username})</span>
+              </button>
             ) : (
               <Link
                 to="/login"
                 onClick={closeMenu}
-                className="block text-center bg-[#0077BE] hover:bg-[#0099E5] active:bg-[#0066A5] text-[#1E1E1E] text-base font-semibold py-3.5 px-4 rounded-lg transition-colors duration-200"
+                className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#f01a30] text-white font-extrabold rounded-xl text-base shadow-md"
               >
-                Sign In / Sign Up
+                <User className="w-5 h-5" />
+                <span>Sign In</span>
               </Link>
             )}
           </div>
         </div>
-      </div>
-
-      {/* Overlay */}
-      {isOpen && (
-        <div
-          onClick={closeMenu}
-          className="md:hidden fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 animate-[fadeIn_0.3s_ease-out]"
-        ></div>
       )}
     </header>
   );

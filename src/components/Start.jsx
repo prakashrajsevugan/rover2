@@ -1,121 +1,115 @@
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { ArrowRight, Bot, Compass, ShieldCheck } from "lucide-react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+
 const Start = () => {
   const navigate = useNavigate();
-  const features = [
-    {
-      icon: "🗑️",
-      title: "Surface Debris Collection",
-      description: "Intelligent surface debris detection and removal system"
+  const containerRef = useRef(null);
+
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        ".gsap-hero-card",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+      );
+
+      gsap.fromTo(
+        ".gsap-text",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, delay: 0.2, ease: "power2.out" }
+      );
+
+      gsap.fromTo(
+        ".gsap-feature-card",
+        { opacity: 0, y: 25 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, delay: 0.4, ease: "power2.out" }
+      );
+
+      gsap.fromTo(
+        ".gsap-cta-btn",
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.5, delay: 0.7, ease: "power2.out" }
+      );
     },
-    {
-      icon: "📍",
-      title: "Real-time Tracking",
-      description: "Live location monitoring and surface route optimization"
-    },
-    {
-      icon: "📷",
-      title: "Surface Camera",
-      description: "High-resolution imaging for surface water inspection"
-    }
-  ];
+    { scope: containerRef }
+  );
 
   return (
-    <div id="start" className="min-h-screen bg-gradient-to-br from-[#DFE6E9] via-[#E8EBF0] to-[#DFE6E9] py-12 sm:py-16 px-4 sm:px-6">
-      <div className="w-full max-w-2xl mx-auto">
-        {/* Hero Section */}
-        <div className="bg-[#DFE6E9]/60 backdrop-blur-none border border-[#636E72]/40 rounded-2xl shadow-xl p-8 sm:p-10 md:p-12 mb-8">
-        {/* Header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center mb-6">
-            <img 
-              src="/images/header.png" 
+    <div id="start" ref={containerRef} className="min-h-screen bg-slate-50 py-12 sm:py-16 px-4 sm:px-6">
+      <div className="w-[95%] md:w-[70%] mx-auto space-y-8">
+        
+        {/* Corporate Hero Card */}
+        <div className="gsap-hero-card bg-white/90 backdrop-blur-xl rounded-3xl p-8 sm:p-14 shadow-xl border border-slate-200/90 text-center space-y-8">
+          
+          {/* Static Brand Logo */}
+          <div className="inline-flex items-center justify-center mx-auto bg-transparent">
+            <img
+              src="/images/header.png"
               alt="Albedrozes Logo"
-              className="w-20 h-19 object-contain shadow-lg shadow-[#D63031]/15"
-              style={{ borderRadius: '10px' }}
+              className="h-20 sm:h-24 w-auto object-contain mix-blend-multiply bg-transparent"
             />
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1E1E1E] mb-3 tracking-tight leading-tight">
-            Albedrozes Water Cleaning System
-          </h1>
-          <p className="text-lg sm:text-xl text-[#D63031] font-medium mb-3">
-            Autonomous Rover Technology
-          </p>
-          <p className="text-[#636E72] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Advanced Autonomous Water Purification & Debris Collection Platform
-          </p>
-        </div>
 
-        {/* Product Showcase */}
-        <div className="bg-gray-100 rounded-xl overflow-hidden mb-8 border border-[#636E72]/40">
-          {/* <div className="relative aspect-video overflow-hidden">
-            <img 
-              src="/images/rover2.jpeg" 
-              alt="Albedrozes Surface Rover - Advanced Water Cleaning System" 
-              className="w-full h-full object-cover"
-            />
-          </div> */}
-          <div className="p-6 sm:p-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#1E1E1E] mb-3">
-              Surface Cleaning Rover
-            </h2>
-            <p className="text-[#636E72] text-base sm:text-lg leading-relaxed mb-6">
-              Our flagship autonomous water cleaning rover, equipped with intelligent debris collection, real-time GPS tracking, and advanced water purification technology.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-[#D63031]/20 text-[#D63031] border border-[#636E72]/40">
-                🤖 Autonomous
-              </span>
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-[#D63031]/20 text-[#E84C3D] border border-[#636E72]/40">
-                🐢 Amphibious
-              </span>
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-[#D63031]/20 text-[#FF5757] border border-[#636E72]/40">
-                📍 Live Tracking
+          <div className="space-y-3 max-w-3xl mx-auto">
+            <div className="gsap-text">
+              <span className="text-xs font-extrabold text-[#f01a30] tracking-widest uppercase bg-rose-50 px-3.5 py-1.5 rounded-full border border-rose-200/80 inline-block">
+                ALBEDROZES PRIVATE LIMITED
               </span>
             </div>
+
+            <h1 className="gsap-text text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+              Autonomous Water Cleanup & Telemetry Platform
+            </h1>
+
+            <p className="gsap-text text-slate-600 text-base sm:text-lg leading-relaxed pt-2 max-w-2xl mx-auto">
+              Enterprise-grade spatial positioning, real-time video streaming, automated surface debris collection, and multi-sensor water quality monitoring.
+            </p>
           </div>
+
+          {/* Feature Badges */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 max-w-4xl mx-auto">
+            <div className="gsap-feature-card bg-slate-50/80 p-6 rounded-2xl border border-slate-200 shadow-xs hover:shadow-md hover:bg-white transition-all flex flex-col items-center text-center space-y-3 group">
+              <div className="w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#f01a30] group-hover:scale-105 transition-transform">
+                <Bot className="w-6 h-6" />
+              </div>
+              <h3 className="font-extrabold text-slate-900 text-sm">Autonomous Navigation</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">Self-guided debris sweeping with intelligent obstacle avoidance</p>
+            </div>
+
+            <div className="gsap-feature-card bg-slate-50/80 p-6 rounded-2xl border border-slate-200 shadow-xs hover:shadow-md hover:bg-white transition-all flex flex-col items-center text-center space-y-3 group">
+              <div className="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 group-hover:scale-105 transition-transform">
+                <Compass className="w-6 h-6" />
+              </div>
+              <h3 className="font-extrabold text-slate-900 text-sm">Live GPS Mapping</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">Real-time OpenStreetMap spatial positioning and route tracking</p>
+            </div>
+
+            <div className="gsap-feature-card bg-slate-50/80 p-6 rounded-2xl border border-slate-200 shadow-xs hover:shadow-md hover:bg-white transition-all flex flex-col items-center text-center space-y-3 group">
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 group-hover:scale-105 transition-transform">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h3 className="font-extrabold text-slate-900 text-sm">Water Telemetry</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">Real-time monitoring for pH, Turbidity, TDS, DO, BOD & COD</p>
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <div className="gsap-cta-btn pt-4">
+            <button
+              onClick={() => navigate("/login")}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-[#f01a30] hover:bg-[#d61327] text-white font-extrabold text-base rounded-xl shadow-lg shadow-[#f01a30]/25 hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+            >
+              <span>Launch Enterprise Dashboard</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+
         </div>
 
-        {/* CTA Button */}
-        <div className="text-center">
-          <button
-            onClick={() => navigate("/login")}
-            className="px-8 py-3 bg-gradient-to-r from-[#D63031] to-[#E84C3D] hover:from-[#E84C3D] hover:to-[#D63031] text-[#1E1E1E] font-semibold text-lg rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#D63031]/30 active:scale-[0.98]"
-          >
-            Get Started
-          </button>
-        </div>
       </div>
-{/* 
-      <div className="w-full max-w-2xl mx-auto bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl sm:rounded-3xl shadow-lg overflow-hidden mb-8 sm:mb-12 border border-teal-200 animate-[scaleIn_0.8s_ease-out] hover:shadow-2xl transition-all duration-300" style={{ animationDelay: '0.2s' }}>
-        <div className="relative overflow-hidden bg-white p-6 sm:p-8">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-rose-400/10 to-orange-400/10 pointer-events-none"></div>
-          <img 
-            src="/images/rover2.jpeg" 
-            alt="Albedrozes Advanced Water Rover - Dual Tank System" 
-            className="w-full h-auto max-w-full object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 relative z-10"
-          />
-        </div>
-        <div className="p-5 sm:p-6 bg-white">
-          <h2 className="text-center text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-rose-600 to-orange-600 bg-clip-text text-transparent mb-3">
-            Dual Collection System
-          </h2>
-          <p className="text-center text-[#636E72] text-sm sm:text-base md:text-lg leading-relaxed px-2 mb-3">
-            Features dual floating tanks for enhanced stability and increased debris storage capacity. Perfect for large-scale water body cleaning operations with extended deployment times.
-          </p>
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-rose-100 text-rose-700">
-              🗑️ 50L Capacity
-            </span>
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-orange-100 text-orange-700">
-              ⚖️ Balanced Design
-            </span>
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-amber-100 text-amber-700">
-              🔄 Auto-Deploy
-            </span>
-          </div>
-        </div>
-      </div> */}
-    </div>
     </div>
   );
 };
