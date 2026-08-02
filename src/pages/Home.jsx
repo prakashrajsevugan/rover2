@@ -332,15 +332,38 @@ const Home = () => {
     }
   };
 
+  // Sync stream to video element when camera is turned online
+  useEffect(() => {
+    if (stream && videoRef.current && cameraStatus === "online") {
+      videoRef.current.srcObject = stream;
+    }
+  }, [stream, cameraStatus]);
+
+  // Clean up media stream on component unmount
+  useEffect(() => {
+    return () => {
+      if (stream) {
+        stream.getTracks().forEach(t => t.stop());
+      }
+    };
+  }, [stream]);
+
   const handleCameraStart = async () => {
     try {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert("Camera API is not supported in this browser or context (requires HTTPS or localhost).");
+        return;
+      }
       const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
       setStream(mediaStream);
-      if (videoRef.current) videoRef.current.srcObject = mediaStream;
       setCameraStatus("online");
     } catch (err) {
       console.error("Camera access error:", err);
-      alert("Camera unavailable.");
+      if (err.name === "NotAllowedError" || err.name === "PermissionDeniedError") {
+        alert("Camera permission was denied. Please allow camera access in your browser settings.");
+      } else {
+        alert(`Camera unavailable: ${err.message || err.name || "Unknown error"}`);
+      }
     }
   };
 
@@ -348,7 +371,9 @@ const Home = () => {
     if (stream) {
       stream.getTracks().forEach(t => t.stop());
       setStream(null);
-      if (videoRef.current) videoRef.current.srcObject = null;
+    }
+    if (videoRef.current) {
+      videoRef.current.srcObject = null;
     }
     setCameraStatus("offline");
   };

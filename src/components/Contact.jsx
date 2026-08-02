@@ -10,14 +10,14 @@ export const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      detail: "support@albedrozes.com",
-      link: "mailto:support@albedrozes.com"
+      detail: "albedrozes@gmail.com",
+      link: "mailto:albedrozes@gmail.com"
     },
     {
       icon: Phone,
       title: "Call Us",
-      detail: "+91 96843 34356",
-      link: "tel:+919684334356"
+      detail: "+91 9003124670",
+      link: "tel:+919003124670"
     },
     {
       icon: MapPin,
